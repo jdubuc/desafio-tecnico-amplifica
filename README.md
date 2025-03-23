@@ -20,8 +20,8 @@ Composer instalado en WSL
 1️⃣ Clonar el Repositorio
 
 # Abrir una terminal en WSL y ejecutar:
-git clone https://github.com/tu_usuario/tu_repositorio.git
-cd tu_repositorio
+git clone https://github.com/jdubuc/desafio-tecnico-amplifica.git
+cd desafio-tecnico-amplifica
 
 2️⃣ Configurar Variables de Entorno
 
