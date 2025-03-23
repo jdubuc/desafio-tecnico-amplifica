@@ -1,5 +1,5 @@
 
-Proyecto Laravel - Sistema de Tarifas y Carrito de Compras
+Proyecto Laravel - Desafio Amplifica
 
 Este proyecto es una aplicación basada en Laravel 11 que permite gestionar productos, calcular tarifas de envío y mantener un historial de consultas. Utiliza Docker con Laravel Sail para su ejecución.
 
