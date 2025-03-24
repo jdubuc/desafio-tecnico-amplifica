@@ -48,6 +48,7 @@ class ApiTest extends TestCase
         $response = $this->service->getRegionalConfig();
         
         // Verificar que la respuesta tenga los campos esperados
+        //mejora: no usar el indice [0] sino verificar la respuesta completa
         $this->assertArrayHasKey('code', $response[0], 'La respuesta debe contener "code"');
         $this->assertArrayHasKey('region', $response[0], 'La respuesta debe contener "region"');
         $this->assertArrayHasKey('comunas', $response[0], 'La respuesta debe contener "comunas"');

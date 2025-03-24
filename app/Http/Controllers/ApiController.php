@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\AmplificaService;
 
+//controlador en caso de querer usar las llamada a api desde el front, tener disponibles los servicios , falta agregar rutas
 class ApiController extends Controller
 {
     private $amplificaService;

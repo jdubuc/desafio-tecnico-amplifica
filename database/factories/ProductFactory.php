@@ -18,6 +18,7 @@ class ProductFactory extends Factory
 
     public function definition(): array
     {
+        //lista de productos para generar datos de prueba
         $productNames = [
             'Laptop Gamer', 'Teléfono Inteligente', 'Smartwatch', 'Cámara Digital', 'Auriculares Bluetooth',
             'Teclado Mecánico', 'Monitor 4K', 'Silla Ergonómica', 'Mouse Inalámbrico', 'Impresora Láser',

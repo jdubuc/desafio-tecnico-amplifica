@@ -17,14 +17,17 @@ class AmplificaService
 
     public function authenticate() 
     {
+        //verifico si existe token,mejora: podria usar tambien Cache::has para que sea en una linea
         $cachedToken = Cache::get('jwt_token');
 
         if (!$cachedToken) {
+            //si no hay token hago la consulta, mejora: podria usar Guzzle en vez del http
             $response = Http::post("{$this->baseUrl}/auth", [
                 'username' => env('AMPLIFICA_USERNAME'),
                 'password' => env('AMPLIFICA_PASSWORD'),
             ]);
 
+            //Si tengo el token lo guardo en cache, uso cache en este caso para manejar la expiracion del token a 55 min para evitar errores de token
             if ($response->successful()) {
                 $token = $response->json()['token'];
                 Cache::put('jwt_token', $token,  now()->addSeconds(55));
@@ -41,6 +44,7 @@ class AmplificaService
     {
         //Optimización del rendimiento en las consultas a la API
         //se podria usar algo como memcached para guardar a largo plazo este tipo de consultas y no repetirlas
+        
         if(Cache::has('regionalConfig')){
             return Cache::get('regionalConfig');
         }else{
@@ -53,6 +57,7 @@ class AmplificaService
 
     public function getRate($comuna, $products)
     {
+        //Le doi forma al body esperado por el api
         $body = [
             'comuna' => $comuna,
             'products' => array_values($products)

@@ -30,6 +30,7 @@ class DestinationController extends Controller
             //iniciamos una nueva obteniendo el token JWT
             $token = User::getJwtToken();
             
+            //obtenemos regiones y comunas del servicio
             $regionalConfig = $this->amplificaService->getRegionalConfig();
             
             return view('destinos', compact('regionalConfig'));
@@ -44,7 +45,7 @@ class DestinationController extends Controller
             'region' => 'required|string',
             'comuna' => 'required|string',
         ]);
-
+        //como no hay un servicio para guardar los seleccionado, por el momento se guardan en sesion, se podria guardar directamente en BD y hacer migraciones tambien
         Session::put('destino.region',$request->region);
         Session::put('destino.comuna',$request->comuna);
         

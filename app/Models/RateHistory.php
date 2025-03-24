@@ -11,6 +11,7 @@ class RateHistory extends Model
     
     protected $fillable = ['name', 'code', 'price', 'transit_days', 'count'];
 
+    //aca guardo el historial de tarifas, pero si una tarifa se repite, subo la cantidad a esa tarifa que ya existe, eso permite saber que tarifas se consultan mas, un reporte en el historial?
     public static function storeRate($rateData)
     {
         $rate = self::where([
