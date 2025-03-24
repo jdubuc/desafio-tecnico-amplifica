@@ -26,6 +26,8 @@ class RateController extends Controller
 
             $productos = Session::get('carrito');
             $comuna = Session::get('destino.comuna');
+
+            //le doi la forma esperada al array para consultar el servicio
             $productosGetRate = array_map(function($item) {
                 return [
                     'weight' => (int) round($item['weight'], 0),
@@ -34,10 +36,12 @@ class RateController extends Controller
             }, $productos);
 
             $rates = $this->amplificaService->getRate($comuna, $productosGetRate);
+
             if(array_key_exists('message', $rates)){
                 return back()->withErrors($rates['message']);
             }
-
+            
+            //guardo la respuesta en el historial de tarifas
             foreach ($rates as $rate) {
                 RateHistory::storeRate($rate);
             }

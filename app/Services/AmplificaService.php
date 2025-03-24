@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Cache;
 
 class AmplificaService
 {
-    private $baseUrl = 'https://postulaciones.amplifica.io';
+    private $baseUrl = 'https://postulaciones.amplifica.io'; //se deberia colocar en el ENV
     private $token;
 
     public function __construct()
@@ -40,6 +40,7 @@ class AmplificaService
     public function getRegionalConfig()
     {
         //Optimización del rendimiento en las consultas a la API
+        //se podria usar algo como memcached para guardar a largo plazo este tipo de consultas y no repetirlas
         if(Cache::has('regionalConfig')){
             return Cache::get('regionalConfig');
         }else{
